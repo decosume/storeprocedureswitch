@@ -2,6 +2,7 @@ package com.gohc.storeprocedureswitch.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name="CNJC_MX_MAE_REPO_DOCUMENTAL")
@@ -9,19 +10,30 @@ public class Document implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_DOCUMENTO_PK")
     private Long id;
+    @Column(name = "ID_JUICIO_FK")
     private Integer idJuicio;
+    @Column(name = "ID_ETAPA_FK")
     private Integer idEtapa;
+
+    @Column(name = "COD_TIPO_ARCHIVO")
+    private String tipoArchivo;
+    @Column(name = "NOM_ARCHIVO")
+    private String nombreArchivo;
+    @Column(name = "FCH_FECHA_CARGA")
+    private Date fechaCarga;
+    @Column(name = "ID_USR_CARGA")
+    private String usuarioCarga;
+    @Column(name = "TXT_COMENTARIO")
+    private String comentario;
+    @Lob
+    @Column(name = "BLB_ARCHIVO",columnDefinition="BLOB")
+    private byte[] documento;
 
     public Document(){
     }
-   /* private String tipoArchivo;
-    private String nombreArchivo;
-    private Date fechaCarga;
-    private String usuarioCarga;
-    private String comentario;
-    private byte[] documento;
-*/
+
 
     //@GeneratedValue(strategy = GenerationType.TABLE)
     public Long getId() {
@@ -44,53 +56,40 @@ public class Document implements Serializable {
     public void setIdEtapa(Integer idEtapa) {
         this.idEtapa = idEtapa;
     }
-/*
-    @Column(name = "COD_TIPO_ARCHIVO")
     public String getTipoArchivo() {
         return tipoArchivo;
     }
     public void setTipoArchivo(String tipoArchivo) {
         this.tipoArchivo = tipoArchivo;
     }
-
-    @Column(name = "NOM_ARCHIVO")
     public String getNombreArchivo() {
         return nombreArchivo;
     }
     public void setNombreArchivo(String nombreArchivo) {
         this.nombreArchivo = nombreArchivo;
     }
-
-    @Column(name = "FCH_FECHA_CARGA")
     public Date getFechaCarga() {
         return fechaCarga;
     }
     public void setFechaCarga(Date fechaCarga) {
         this.fechaCarga = fechaCarga;
     }
-
-    @Column(name = "ID_USR_CARGA")
     public String getUsuarioCarga() {
         return usuarioCarga;
     }
     public void setUsuarioCarga(String usuarioCarga) {
         this.usuarioCarga = usuarioCarga;
     }
-
-    @Column(name = "TXT_COMENTARIO")
     public String getComentario() {
         return comentario;
     }
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-
-    @Lob
-    @Column(name = "BLB_ARCHIVO",columnDefinition="BLOB")
     public byte[] getDocumento() {
         return documento;
     }
   public void setDocumento(byte[] documento) {
         this.documento = documento;
-    }*/
+    }
 }

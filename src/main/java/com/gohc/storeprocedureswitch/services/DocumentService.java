@@ -12,67 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 
 @Service
-public class DocumentService implements DocumentRepository {
+public class DocumentService implements DocumentServiceI {
 
     @Autowired
-    DocumentRepository documentRepository;
-
-    public com.gohc.storeprocedureswitch.model.Document addDocument(com.gohc.storeprocedureswitch.model.Document document) {
-        return this.documentRepository.save(document);
-    }
+    private DocumentRepository documentRepository;
 
     @Override
-    public <S extends Document> S save(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends Document> Iterable<S> saveAll(Iterable<S> entities) {
-        return null;
-    }
-
-    @Override
-    public Optional<Document> findById(Long aLong) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(Long aLong) {
-        return false;
-    }
-
-    @Override
-    public Iterable<Document> findAll() {
-        return null;
-    }
-
-    @Override
-    public Iterable<Document> findAllById(Iterable<Long> longs) {
-        return null;
-    }
-
-    @Override
-    public long count() {
-        return 0;
-    }
-
-    @Override
-    public void deleteById(Long aLong) {
-
-    }
-
-    @Override
-    public void delete(Document entity) {
-
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends Document> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
+    public Optional<Document> findById(Long id) {
+        return documentRepository.findById(id);
     }
 }
