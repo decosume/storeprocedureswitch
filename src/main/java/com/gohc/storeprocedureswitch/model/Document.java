@@ -9,7 +9,7 @@ import java.util.Date;
 public class Document implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_DOCUMENTO_PK")
     private Long id;
     @Column(name = "ID_JUICIO_FK")

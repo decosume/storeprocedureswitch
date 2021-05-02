@@ -1,6 +1,5 @@
 package com.gohc.storeprocedureswitch.control;
 
-
 import com.gohc.storeprocedureswitch.exception.ResourceNotFoundException;
 import com.gohc.storeprocedureswitch.model.Document;
 import com.gohc.storeprocedureswitch.repository.DocumentRepository;
@@ -23,9 +22,10 @@ public class DocumentController {
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + documentId));
         return ResponseEntity.ok().body(doc);
     }
+   /**/
     @PostMapping("/document")
-    public Document createDocument(@Valid @RequestBody Employee employee) {
-        return employeeRepository.save(employee);
+    public Document createDocument( @RequestBody Document document) {
+        return documentRepository.save(document);
     }
 
 }
